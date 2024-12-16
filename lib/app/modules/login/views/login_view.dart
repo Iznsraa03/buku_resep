@@ -14,28 +14,28 @@ class LoginView extends GetView<LoginController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Login',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 40),
+              const SizedBox(height: 40),
 
               // Username TextField
               TextField(
                 controller: controller.usernameController,
-                decoration: InputDecoration(
-                    labelText: 'Username',
+                decoration: const InputDecoration(
+                    labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.brown),
-                    hintText: 'Masukkan Username',
+                    hintText: 'Masukkan Email',
                     prefixIcon: Icon(Icons.person_outline),
                     border: OutlineInputBorder(),
                     focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.brown))),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Password TextField
               Obx(() => TextField(
@@ -43,9 +43,9 @@ class LoginView extends GetView<LoginController> {
                     obscureText: controller.isPasswordHidden.value,
                     decoration: InputDecoration(
                         labelText: 'Password',
-                        labelStyle: TextStyle(color: Colors.brown),
+                        labelStyle: const TextStyle(color: Colors.brown),
                         hintText: 'Masukkan Password',
-                        prefixIcon: Icon(Icons.lock_outline),
+                        prefixIcon: const Icon(Icons.lock_outline),
                         suffixIcon: IconButton(
                           icon: Icon(
                             controller.isPasswordHidden.value
@@ -56,8 +56,8 @@ class LoginView extends GetView<LoginController> {
                             controller.togglePasswordVisibility();
                           },
                         ),
-                        border: OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
+                        border: const OutlineInputBorder(),
+                        focusedBorder: const OutlineInputBorder(
                             borderSide: BorderSide(color: Colors.brown))),
                   )),
 
@@ -68,14 +68,14 @@ class LoginView extends GetView<LoginController> {
                   onPressed: () {
                     // Tambahkan navigasi atau fungsi lupa password di sini
                   },
-                  child: Text(
+                  child: const Text(
                     'Lupa Password?',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Login Button
               ElevatedButton(
@@ -84,12 +84,12 @@ class LoginView extends GetView<LoginController> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.brown,
-                  padding: EdgeInsets.symmetric(vertical: 15),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Login',
                     style: TextStyle(fontSize: 18, color: Colors.white),
@@ -97,13 +97,13 @@ class LoginView extends GetView<LoginController> {
                 ),
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-              Text('Atau Gunakan'),
+              const Text('Atau Gunakan'),
 
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
 
-              // Social Media Buttons
+              // login google Buttons
 
               IconButton(
                 onPressed: () {
@@ -112,20 +112,20 @@ class LoginView extends GetView<LoginController> {
                 icon: Image.asset("assets/img/Group.png"),
                 iconSize: 40,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Sign Up
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Belum memiliki akun? '),
+                  const Text('Belum memiliki akun? '),
                   GestureDetector(
                     onTap: () {
                       controller.regist();
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign Up',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,

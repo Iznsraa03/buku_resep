@@ -9,6 +9,10 @@ abstract class Routes {
   static const DASHBOARD = _Paths.DASHBOARD;
   static const CATEGORY = _Paths.CATEGORY;
   static const PROFILE = _Paths.PROFILE;
+  static const DETAIL_RESEP = _Paths.DETAIL_RESEP;
+  static const TAMBAH_RESEP = _Paths.TAMBAH_RESEP;
+  static const FORM_TAMBAH_RESEP = _Paths.FORM_TAMBAH_RESEP;
+  static const FORM_TAMBAHA_RESEP = _Paths.FORM_TAMBAHA_RESEP;
 }
 
 abstract class _Paths {
@@ -19,4 +23,8 @@ abstract class _Paths {
   static const DASHBOARD = '/dashboard';
   static const CATEGORY = '/category';
   static const PROFILE = '/profile';
+  static const DETAIL_RESEP = '/detail-resep';
+  static const TAMBAH_RESEP = '/tambah-resep';
+  static const FORM_TAMBAH_RESEP = '/form-tambah-resep';
+  static const FORM_TAMBAHA_RESEP = '/form-tambaha-resep';
 }

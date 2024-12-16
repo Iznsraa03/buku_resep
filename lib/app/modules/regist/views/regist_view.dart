@@ -17,7 +17,7 @@ class RegistView extends GetView<RegistController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Sign Up Title
-                Center(
+                const Center(
                   child: Text(
                     'Sign Up',
                     style: TextStyle(
@@ -26,43 +26,43 @@ class RegistView extends GetView<RegistController> {
                     ),
                   ),
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 
                 // Username TextField
-                Text('Username', style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
+                const Text('Username', style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5),
                 TextField(
                   controller: controller.usernameController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Masukkan Username',
                     prefixIcon: Icon(Icons.person_outline),
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 
                 // Email TextField
-                Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
+                const Text('Email', style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5),
                 TextField(
                   controller: controller.emailController,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Masukkan Email',
                     prefixIcon: Icon(Icons.email_outlined),
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 
                 // Password TextField
-                Text('Password', style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
+                const Text('Password', style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5),
                 Obx(() => TextField(
                   controller: controller.passwordController,
                   obscureText: controller.isPasswordHidden.value,
                   decoration: InputDecoration(
                     hintText: 'Masukkan Password',
-                    prefixIcon: Icon(Icons.lock_outline),
+                    prefixIcon: const Icon(Icons.lock_outline),
                     suffixIcon: IconButton(
                       icon: Icon(controller.isPasswordHidden.value
                           ? Icons.visibility_off
@@ -71,20 +71,20 @@ class RegistView extends GetView<RegistController> {
                         controller.togglePasswordVisibility();
                       },
                     ),
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                 )),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 
                 // Confirm Password TextField
-                Text('Confirm Password', style: TextStyle(fontWeight: FontWeight.bold)),
-                SizedBox(height: 5),
+                const Text('Confirm Password', style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 5),
                 Obx(() => TextField(
                   controller: controller.confirmPasswordController,
                   obscureText: controller.isConfirmPasswordHidden.value,
                   decoration: InputDecoration(
                     hintText: 'Masukkan Kembali Password',
-                    prefixIcon: Icon(Icons.lock_outline),
+                    prefixIcon: const Icon(Icons.lock_outline),
                     suffixIcon: IconButton(
                       icon: Icon(controller.isConfirmPasswordHidden.value
                           ? Icons.visibility_off
@@ -93,10 +93,10 @@ class RegistView extends GetView<RegistController> {
                         controller.toggleConfirmPasswordVisibility();
                       },
                     ),
-                    border: OutlineInputBorder(),
+                    border: const OutlineInputBorder(),
                   ),
                 )),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 
                 // Sign Up Button
                 Center(
@@ -105,13 +105,13 @@ class RegistView extends GetView<RegistController> {
                       controller.handleSignUp();
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.brown,
-                      padding: EdgeInsets.symmetric(vertical: 15, horizontal: 100),
+                      backgroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 100),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Sign Up',
                       style: TextStyle(fontSize: 18),
                     ),

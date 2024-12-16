@@ -4,6 +4,10 @@ import '../modules/category/bindings/category_binding.dart';
 import '../modules/category/views/category_view.dart';
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/detail_resep/bindings/detail_resep_binding.dart';
+import '../modules/detail_resep/views/detail_resep_view.dart';
+import '../modules/form_tambah_resep/bindings/form_tambah_resep_binding.dart';
+import '../modules/form_tambah_resep/views/form_tambah_resep_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -12,6 +16,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/regist/bindings/regist_binding.dart';
 import '../modules/regist/views/regist_view.dart';
+import '../modules/tambah_resep/bindings/tambah_resep_binding.dart';
+import '../modules/tambah_resep/views/tambah_resep_view.dart';
 
 part 'app_routes.dart';
 
@@ -21,7 +27,7 @@ class AppPages {
   static const INITIAL = Routes.LOGIN;
 
   static final routes = [
-     GetPage(
+    GetPage(
       name: _Paths.DASHBOARD,
       page: () => const DashboardView(),
       binding: DashboardBinding(),
@@ -30,6 +36,13 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      children: [
+        GetPage(
+          name: _Paths.HOME,
+          page: () => const HomeView(),
+          binding: HomeBinding(),
+        ),
+      ],
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -48,8 +61,23 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PROFILE,
-      page: () => const ProfileView(),
+      page: () => ProfileView(),
       binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.DETAIL_RESEP,
+      page: () => DetailResepView(),
+      binding: DetailResepBinding(),
+    ),
+    GetPage(
+      name: _Paths.TAMBAH_RESEP,
+      page: () => const TambahResepView(),
+      binding: TambahResepBinding(),
+    ),
+    GetPage(
+      name: _Paths.FORM_TAMBAH_RESEP,
+      page: () => const FormTambahResepView(),
+      binding: FormTambahResepBinding(),
     ),
   ];
 }

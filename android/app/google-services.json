@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "854697612175",
+    "project_id": "bukuapps",
+    "storage_bucket": "bukuapps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854697612175:android:4ae239f1fb162f525f31fa",
+        "android_client_info": {
+          "package_name": "com.resep.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5nriR1dRYAtL0_TqV1NPtQNvC1DUZLuc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
