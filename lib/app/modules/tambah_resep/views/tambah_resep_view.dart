@@ -1,5 +1,7 @@
 import 'package:buku_resep/app/routes/app_pages.dart';
+import 'package:buku_resep/utils/app_colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:gap/gap.dart';
 
 import 'package:get/get.dart';
@@ -14,6 +16,7 @@ class TambahResepView extends GetView<TambahResepController> {
   Widget build(BuildContext context) {
     Get.lazyPut(() => TambahResepController());
     return Scaffold(
+      backgroundColor: AppColors.background,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -54,17 +57,27 @@ class TambahResepView extends GetView<TambahResepController> {
                       itemCount: controller.resepList.length,
                       itemBuilder: (context, index) {
                         final resep = controller.resepList[index];
-                        return contentCard(
-                          img: resep['img'] ?? 'assets/img/default.png',
-                          title: resep['nama'] ?? 'Tidak ada nama',
-                          onTap: () {
-                            // Navigasi atau logika tambahan bisa dimasukkan di sini
-                          },
-                          onEdit: () {},
-                          onDelete: () {
-                            Navigator.of(context).pop();
-                            controller.deleteResep(resep['id']);
-                          },
+                        return AnimationConfiguration.staggeredGrid(
+                          position: index,
+                          duration: const Duration(milliseconds: 500),
+                          columnCount: 2,
+                          child: SlideAnimation(
+                            verticalOffset: 50.0,
+                            child: FadeInAnimation(
+                              child: contentCard(
+                                img: resep['img'] ?? 'assets/img/default.png',
+                                title: resep['nama'] ?? 'Tidak ada nama',
+                                onTap: () {
+                                  // Navigasi atau logika tambahan bisa dimasukkan di sini
+                                },
+                                onEdit: () {},
+                                onDelete: () {
+                                  Navigator.of(context).pop();
+                                  controller.deleteResep(resep['id']);
+                                },
+                              ),
+                            ),
+                          ),
                         );
                       },
                     );
@@ -80,7 +93,7 @@ class TambahResepView extends GetView<TambahResepController> {
           Get.toNamed(Routes.FORM_TAMBAH_RESEP);
         },
         shape: const CircleBorder(),
-        backgroundColor: Colors.orange,
+        backgroundColor: AppColors.primary,
         child: const Icon(
           Icons.add,
           color: Colors.white,
@@ -100,16 +113,24 @@ class TambahResepView extends GetView<TambahResepController> {
       onTap: onTap,
       onLongPress: () {
         Get.defaultDialog(
+          backgroundColor: AppColors.background,
+          buttonColor: AppColors.primary,
           title: 'Pilihan Aksi',
           middleText: 'Pilih aksi yang ingin Anda lakukan',
           actions: [
             TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: AppColors.primary
+              ),
               onPressed: onEdit,
-              child: const Text('Edit'),
+              child:  Text('Edit',style: TextStyle(color: Colors.white),),
             ),
             TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: AppColors.primary
+              ),
               onPressed: onDelete,
-              child: const Text('Hapus'),
+              child:  Text('Hapus', style: TextStyle(color: Colors.white),),
             ),
           ],
         );
@@ -118,19 +139,24 @@ class TambahResepView extends GetView<TambahResepController> {
         width: 190,
         child: Card(
           elevation: 8,
-          color: Colors.grey[300],
+          color: AppColors.primary,
           child: Padding(
             padding: const EdgeInsets.all(5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.network(img, scale: 0.1,
-                    errorBuilder: (context, error, stackTrace) {
-                  return Image.asset('assets/img/default.png', scale: 0.1);
-                }),
-                const Gap(15),
+                ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(12),
+                  child: Image.network(img, scale: 0.1,
+                      errorBuilder: (context, error, stackTrace) {
+                    return Image.asset('assets/img/default.png', scale: 0.1);
+                  },
+                  width: 500,),
+                ),
+                const Gap(10),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,27 +167,11 @@ class TambahResepView extends GetView<TambahResepController> {
                             textStyle: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 15,
+                              color: Colors.white
                             ),
                           ),
                         ),
-                        const Gap(10),
-                        const Row(
-                          children: [
-                            ImageIcon(AssetImage('assets/icons/Desc.png'),
-                                size: 20),
-                            Gap(5),
-                            Text('Lihat Resep')
-                          ],
-                        )
-                      ],
-                    ),
-                    const Gap(20),
-                    const Column(
-                      children: [
-                        Icon(Icons.favorite_border_outlined),
-                        Gap(5),
-                        Icon(Icons.bookmark_border_outlined)
-                      ],
+                      ]
                     ),
                   ],
                 ),

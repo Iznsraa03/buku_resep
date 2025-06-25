@@ -32,7 +32,7 @@ class ProfileController extends GetxController {
       if (userDoc.exists) {
         // Simpan data pengguna ke dalam GetX
         userData.value = userDoc.data()!;
-        print('Data pengguna berhasil diambil: ${userData.value}');
+        print('Data pengguna berhas il diambil: ${userData.value}');
       } else {
         print('Data pengguna tidak ditemukan di Firestore untuk userId: $userId');
       }
