@@ -13,7 +13,7 @@ AnimationConfiguration contentCard({
   void Function()? onPressedLike,
   void Function()? onPressedBookmark,
   required Widget iconLike,
-  required Widget iconBM
+  required Widget iconBM,
 }) {
   return AnimationConfiguration.staggeredList(
     position: index,
@@ -30,88 +30,102 @@ AnimationConfiguration contentCard({
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(5),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      img,
-                      fit: BoxFit.cover,
-                      width: 500,
-                      height: 130,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Image.asset(
-                          'assets/img/default.png',
-                          fit: BoxFit.cover,
-                          width: 500,
-                          height: 150,
-                        );
-                      },
+            child: SizedBox(
+              width: 160, // Lebar tetap untuk konsistensi
+              height: 230, // Tinggi tetap untuk menghindari overflow
+              child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Bagian Gambar
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        img,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                        height: 120,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset(
+                            'assets/img/default.png',
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 120,
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Gap(10),
-                          Text(
-                            title,
-                            style: GoogleFonts.poppins(
-                              textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                              ),
+                    const Gap(8),
+                    
+                    // Bagian Judul
+                    Expanded(
+                      child: Text(
+                        title,
+                        style: GoogleFonts.poppins(
+                          textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    const Gap(4),
+                    
+                    // Bagian "Lihat Resep"
+                    const Row(
+                      children: [
+                        ImageIcon(
+                          AssetImage('assets/icons/Desc.png'),
+                          size: 16,
+                          color: Colors.white,
+                        ),
+                        Gap(4),
+                        Text(
+                          'Lihat Resep',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Gap(8),
+                    
+                    // Bagian Tombol Like dan Bookmark
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        // Spacer untuk mendorong tombol ke kanan
+                        const SizedBox.shrink(),
+                        
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: onPressedLike,
+                              icon: iconLike,
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                              iconSize: 20,
                             ),
-                          ),
-                          const Gap(35),
-                          const Row(
-                            children: [
-                              ImageIcon(
-                                AssetImage('assets/icons/Desc.png'),
-                                size: 20,
-                                color: Colors.white,
-                              ),
-                              Gap(5),
-                              Text(
-                                'Lihat Resep',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          IconButton(
-                                onPressed: onPressedLike,
-                                icon: iconLike
-                              ),
-                          Gap(5),
-                          IconButton(
-                                onPressed: onPressedBookmark,
-                                icon: iconBM
-                              ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+                            const Gap(4),
+                            IconButton(
+                              onPressed: onPressedBookmark,
+                              icon: iconBM,
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(),
+                              iconSize: 20,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
